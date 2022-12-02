@@ -1,10 +1,8 @@
 import { CommandInterface } from "../class/command-interface";
-import {existsSync } from 'node:fs';
-import { promisify } from 'node:util';
+;
 
 export function parseCommand( input:String ):CommandInterface {
 
-    const pathRegex = "([a-zA-Z]:)?(\\\\[a-zA-Z0-9_.-]+)+\\\\?";
 
     let args = process.argv.slice(2);
 
