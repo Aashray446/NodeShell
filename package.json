@@ -8,6 +8,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
+    "type": "module",
     "paths": {
       "*": [
         "node_modules/*",
@@ -15,10 +16,19 @@
       ]
     }
   },
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "nodemon --exec ts-node src/index.ts"
+  },
   "include": [
     "src/**/*"
   ],
   "devDependencies": {
     "@types/node": "^18.11.9"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "prompt-sync": "^4.2.0"
   }
 }
