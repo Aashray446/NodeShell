@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { exec } from "node:child_process";
+import { exec, spawn } from "child_process";
 import { CommandInterface } from "./command-interface";
 
 
@@ -81,7 +81,18 @@ class ExecuteFileCommand extends Command {
     }
 
     execute(command:CommandInterface) {
-        exec(command.name, handler);
+       const  child  = spawn(command.name, command.args, {stdio: "inherit", shell: true});
+
+         child.on("error", (err) => {
+            console.log(chalk.redBright(err.message));
+        })
+
+
+        child.on("exit", (code) => {
+            console.log(chalk.yellowBright("Process exited with code: " + code));
+        }
+        )
+
     }
 
 }

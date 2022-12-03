@@ -27,6 +27,7 @@ export async function shellEngine( ) {
             continue;
         }
 
+        // If path to binary is passed
         if(existsSync(command.name)) {
             executeFileCommand.execute(command);
             continue;
