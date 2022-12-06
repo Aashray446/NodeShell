@@ -35,10 +35,12 @@ export async function shellEngine( ) {
 
         if(supportedCmd.has(command.name)) {
             supportedCmd.get(command.name)?.execute(command);
+            continue;
         }
-        else {
-            console.log(chalk.redBright("Command not found"));
-        }
+        
+
+        console.log(chalk.redBright("Command not found"));
+    
        
 
     }

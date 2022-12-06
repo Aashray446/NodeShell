@@ -18,6 +18,8 @@ const handler = (err:Error, stdout:string, stderr:string) => {
     }
 
 }
+
+
 export abstract class Command {
 
     command:string;
@@ -81,7 +83,11 @@ class ExecuteFileCommand extends Command {
     }
 
     execute(command:CommandInterface) {
-       const  child  = spawn(command.name, command.args, {stdio: "inherit", shell: true});
+       const  child  = spawn(command.name, command.args, {stdio: "ignore", detached: true});
+
+       if(child.pid) {
+              console.log(chalk.greenBright("Process started with pid: " + child.pid));
+         }
 
          child.on("error", (err) => {
             console.log(chalk.redBright(err.message));
@@ -92,11 +98,9 @@ class ExecuteFileCommand extends Command {
             console.log(chalk.yellowBright("Process exited with code: " + code));
         }
         )
-
     }
 
 }
-
 
 export const executeAbleCommands = new ExecutableCommands();
 export const exitCommand = new ExitCommand();

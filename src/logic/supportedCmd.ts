@@ -12,7 +12,7 @@ let executeAbleCommandsList;
     }
 
     executeAbleCommandsList = [
-        'ls', 'pwd', 'mkdir', 'rmdir', 'rm', 'touch', 'cat', 'cp', 'mv', 'echo'
+        'ls', 'pwd', 'mkdir', 'rmdir', 'rm', 'touch', 'cat', 'cp', 'mv', 'echo', 'fg'
     ]
 
 } )()
