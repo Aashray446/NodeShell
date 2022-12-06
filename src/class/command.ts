@@ -83,7 +83,8 @@ class ExecuteFileCommand extends Command {
     }
 
     execute(command:CommandInterface) {
-       const  child  = spawn(command.name, command.args, {stdio: "ignore", detached: true});
+
+        const  child  = spawn(command.name, command.args, {stdio: "ignore", detached: true});
 
        if(child.pid) {
               console.log(chalk.greenBright("Process started with pid: " + child.pid));
